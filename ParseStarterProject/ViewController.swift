@@ -75,7 +75,7 @@ class ViewController: UIViewController ,UITextFieldDelegate{
                     
                 } else {
                     
-                  
+                  self.performSegueWithIdentifier("loginRider", sender: self)
                     
                 }
             }
@@ -86,7 +86,7 @@ class ViewController: UIViewController ,UITextFieldDelegate{
                 (user, error) -> Void in
                 if user != nil {
                     
-                    
+                    self.performSegueWithIdentifier("loginRider", sender: self)
                     
                     
                 } else {
@@ -176,6 +176,16 @@ class ViewController: UIViewController ,UITextFieldDelegate{
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
+    }
+    
+    
+    override func viewDidAppear(animated: Bool) {
+        
+        if PFUser.currentUser()?.username != nil {
+        
+              self.performSegueWithIdentifier("loginRider", sender: self)
+        }
+        
     }
 
 }

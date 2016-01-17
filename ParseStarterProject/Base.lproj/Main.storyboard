@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Gaq-Vj-7IM">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
@@ -152,6 +152,7 @@
                         <outlet property="signUpLbl" destination="YnL-dj-Riw" id="74b-vU-Juj"/>
                         <outlet property="switch" destination="ONH-ET-mH1" id="0ZX-N2-si2"/>
                         <outlet property="username" destination="evQ-Ta-Ncm" id="RoY-0G-pnp"/>
+                        <segue destination="Gaq-Vj-7IM" kind="show" identifier="loginRider" id="puT-rz-IDa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -171,7 +172,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2XZ-3S-YUh">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="3Ns-SC-dab"/>
@@ -186,15 +187,59 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="fNf-gG-IqD">
+                                <rect key="frame" x="0.0" y="64" width="600" height="397"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="397" id="vI6-HC-cxu"/>
+                                </constraints>
+                            </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ajD-Nw-daV">
+                                <rect key="frame" x="165" y="511" width="270" height="85"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3y6-VZ-Mg8">
+                                        <rect key="frame" x="58" y="28" width="154" height="30"/>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.1176470588" green="0.53333333329999999" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="154" id="7ZL-xp-HvY"/>
+                                            <constraint firstAttribute="height" constant="30" id="w57-fU-8Xm"/>
+                                        </constraints>
+                                        <state key="normal" title="call for Uber">
+                                            <color key="titleColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="callforUber:" destination="Gaq-Vj-7IM" eventType="touchUpInside" id="NEU-l1-jMQ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="270" id="6Q3-Gl-FK7"/>
+                                    <constraint firstAttribute="height" constant="85" id="IOC-XP-hJl"/>
+                                    <constraint firstItem="3y6-VZ-Mg8" firstAttribute="centerY" secondItem="ajD-Nw-daV" secondAttribute="centerY" id="m3q-1y-z7U"/>
+                                    <constraint firstItem="3y6-VZ-Mg8" firstAttribute="centerX" secondItem="ajD-Nw-daV" secondAttribute="centerX" id="nS5-UR-f3w"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="2XZ-3S-YUh" firstAttribute="top" secondItem="g58-nS-2xg" secondAttribute="topMargin" id="GyN-3f-6Hh"/>
+                            <constraint firstItem="fNf-gG-IqD" firstAttribute="top" secondItem="2XZ-3S-YUh" secondAttribute="bottom" id="FFX-oU-1rd"/>
+                            <constraint firstItem="2XZ-3S-YUh" firstAttribute="top" secondItem="g58-nS-2xg" secondAttribute="topMargin" constant="20" id="GyN-3f-6Hh"/>
+                            <constraint firstItem="fNf-gG-IqD" firstAttribute="leading" secondItem="g58-nS-2xg" secondAttribute="leadingMargin" constant="-20" id="ZOq-bm-N6o"/>
+                            <constraint firstItem="ajD-Nw-daV" firstAttribute="centerX" secondItem="g58-nS-2xg" secondAttribute="centerX" id="iPS-QE-XVb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fNf-gG-IqD" secondAttribute="trailing" constant="-20" id="ki6-dA-31o"/>
+                            <constraint firstItem="ajD-Nw-daV" firstAttribute="top" secondItem="fNf-gG-IqD" secondAttribute="bottom" constant="50" id="wK8-zi-xU9"/>
                             <constraint firstItem="2XZ-3S-YUh" firstAttribute="leading" secondItem="g58-nS-2xg" secondAttribute="leadingMargin" constant="-20" id="yV0-5M-4lt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2XZ-3S-YUh" secondAttribute="trailing" constant="-20" id="zz9-Is-19s"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="calluberbutton" destination="3y6-VZ-Mg8" id="mvf-dX-uxh"/>
+                        <outlet property="map" destination="fNf-gG-IqD" id="W41-A7-yhM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iY2-vv-Bdm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
