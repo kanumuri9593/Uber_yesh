@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Gaq-Vj-7IM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
@@ -153,11 +153,12 @@
                         <outlet property="switch" destination="ONH-ET-mH1" id="0ZX-N2-si2"/>
                         <outlet property="username" destination="evQ-Ta-Ncm" id="RoY-0G-pnp"/>
                         <segue destination="Gaq-Vj-7IM" kind="show" identifier="loginRider" id="puT-rz-IDa"/>
+                        <segue destination="piF-oK-ZD1" kind="show" identifier="loginDriver" id="IhX-uN-7MD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-217" y="309"/>
+            <point key="canvasLocation" x="-339" y="-105"/>
         </scene>
         <!--Rider View Controller-->
         <scene sceneID="eEA-8u-gwd">
@@ -243,11 +244,69 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iY2-vv-Bdm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="463" y="309"/>
+            <point key="canvasLocation" x="479" y="-105"/>
+        </scene>
+        <!--Driver view controller-->
+        <scene sceneID="Agm-Rw-W6J">
+            <objects>
+                <tableViewController title="Driver view controller" id="D5x-kj-dr5" customClass="DriverViewController" customModule="Uber_yesh" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="25U-yo-wOy">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="SW0-kn-0aw">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SW0-kn-0aw" id="MUP-GD-KPF">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="D5x-kj-dr5" id="51D-Gv-ypr"/>
+                            <outlet property="delegate" destination="D5x-kj-dr5" id="oA3-2D-DJM"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Requests" id="cMP-Au-vEO">
+                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="hdO-vB-evw">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="show" identifier="logoutDriver" id="5xa-nV-c4N"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Six-uw-D8D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="325" y="651"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Txo-zD-5P3">
+            <objects>
+                <navigationController id="piF-oK-ZD1" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="76g-bT-3Hq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="D5x-kj-dr5" kind="relationship" relationship="rootViewController" id="8Vd-oM-EhE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pQ8-hc-zDt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-339" y="651"/>
         </scene>
     </scenes>
     <resources>
         <image name="uber" width="2560" height="1440"/>
         <image name="uber-logo" width="3200" height="1800"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="5xa-nV-c4N"/>
+    </inferredMetricsTieBreakers>
 </document>
