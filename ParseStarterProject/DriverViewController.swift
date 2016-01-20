@@ -43,7 +43,7 @@ class DriverViewController: UITableViewController ,CLLocationManagerDelegate ,MK
         self.lat = location.latitude
         self.long = location.longitude
         
-        print("Locations : \(lat) , \(long)")
+       // print("Locations : \(lat) , \(long)")
         var query = PFQuery(className:"riderRequest")
         
         query.whereKey("location", nearGeoPoint:PFGeoPoint(latitude:location.latitude, longitude:location.longitude))
@@ -56,7 +56,7 @@ class DriverViewController: UITableViewController ,CLLocationManagerDelegate ,MK
                 
                 
                 
-                print("Successfully retrieved \(objects!) .")
+                //print("Successfully retrieved \(objects!) .")
                 
                 // Do something with the found objects
                 if let objects = objects {
@@ -66,6 +66,14 @@ class DriverViewController: UITableViewController ,CLLocationManagerDelegate ,MK
                     
                     
                     for object in objects {
+                        
+                        if let object:PFObject = object as! PFObject{
+                        
+                        
+                        print(object["driverResponded"])
+                        
+                        
+                       if object["driverResponded"] == nil {
                         
                         if let username = object["username"] as? String {
                             
@@ -88,13 +96,16 @@ class DriverViewController: UITableViewController ,CLLocationManagerDelegate ,MK
                             self.distancs.append(distnace/1000)
                             
                             
-                            
+                            }
                         }
-                        self.tableView.reloadData()
-                        print(self.locations)
-                        print(self.usernames)
-                        
                     }
+                    }
+                    
+                        self.tableView.reloadData()
+                       // print(self.locations)
+                      //  print(self.usernames)
+                        
+                    
                 }
                 
                 
@@ -136,52 +147,7 @@ class DriverViewController: UITableViewController ,CLLocationManagerDelegate ,MK
 
         return cell
     }
-    
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         
@@ -191,6 +157,13 @@ class DriverViewController: UITableViewController ,CLLocationManagerDelegate ,MK
             
             PFUser.logOut()
             
+            
+        } else if segue.identifier == "showViewRequests" {
+        
+        let destination = segue.destinationViewController as? RequestViewController
+        
+        destination?.requestLocation = locations[(tableView.indexPathForSelectedRow?.row)!]
+            destination?.requestUsername = usernames[(tableView.indexPathForSelectedRow?.row)!]
             
         }
     }

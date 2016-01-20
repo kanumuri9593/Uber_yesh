@@ -47,7 +47,7 @@ class RiderViewController: UIViewController ,CLLocationManagerDelegate ,MKMapVie
         self.lat = location.latitude
         self.long = location.longitude
         
-        print("Locations : \(lat) , \(long)")
+        // print("Locations : \(lat) , \(long)")
         let center = CLLocationCoordinate2D(latitude: lat, longitude: long)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         
@@ -143,7 +143,7 @@ class RiderViewController: UIViewController ,CLLocationManagerDelegate ,MKMapVie
                 
                 
                 
-                print("Successfully retrieved \(objects!) .")
+              //  print("Successfully retrieved \(objects!) .")
                 
                 // Do something with the found objects
                 if let objects = objects {
@@ -151,7 +151,7 @@ class RiderViewController: UIViewController ,CLLocationManagerDelegate ,MKMapVie
                         
                         object.deleteInBackground()
                         
-                        print(object.objectId!)
+                       // print(object.objectId!)
                     }
                 }
                
